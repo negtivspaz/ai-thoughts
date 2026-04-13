@@ -1,6 +1,6 @@
 # Writing Your Own Custom Skill in OpenClaw 🦞
 
-![customSkill](2604061410_openclaw-custom-skills.png)
+![customSkill](img/2604061410_openclaw-custom-skills.png)
 
 ## Getting Started
 

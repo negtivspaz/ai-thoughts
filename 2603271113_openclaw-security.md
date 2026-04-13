@@ -1,6 +1,6 @@
 # OpenClaw 安全风险：给用户与自托管者的警钟
 
-![secImg](2603271113_openclaw-security.png)
+![secImg](img/2603271113_openclaw-security.png)
 
 OpenClaw 🦞 是一款流行的开源 AI 代理平台，提供强大的自动化能力，但近来的 Reddit 讨论与安全审计揭示了严重的安全隐患。本篇文章梳理了已曝光的风险、真实事件与可行修复建议，帮助你在自托管时采取保护措施，或决定是否迁移到更安全的替代方案。
 

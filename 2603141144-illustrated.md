@@ -1,6 +1,6 @@
 ## Polished & Translated (zh-CN)
 
-![](./2603141144-main.png)
+![](img/2603141144-main.png)
 
 
 # 如何利用AI开始一人公司

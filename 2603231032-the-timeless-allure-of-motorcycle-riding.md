@@ -1,16 +1,16 @@
 # The Timeless Allure of Motorcycle Riding
 
-![Hero image](2603230855-main.png)
+![Hero image](img/2603230855-main.png)
 
 ## Introduction
 
-![Introduction image](2603230855-section1.png)
+![Introduction image](img/2603230855-section1.png)
 
 Motorcycles are more than machines; they are a way of being. For riders, a motorcycle is a precise instrument and a companion that translates intention into motion. Over the last century, motorcycles have evolved from simple, utilitarian transport into highly engineered platforms that simultaneously deliver performance, practicality, and personal expression. This article traces that evolution, surveys the major types of bikes today, and reflects on what motorcycling has taught me personally about skill, restraint, and the kind of freedom you only feel when two wheels are rolling beneath you.
 
 ## A Brief History of Motorcycles and Riding
 
-![History image](2603230855-section2.png)
+![History image](img/2603230855-section2.png)
 
 The story of the motorcycle begins in the late 19th century, when bicycle builders experimented with mounting small engines on frames to gain speed and range. The 1885 Reitwagen by Gottlieb Daimler and Wilhelm Maybach is often cited as the first true motorcycle: a wooden-framed vehicle powered by a single-cylinder engine. Though primitive by modern standards, it proved an idea whose time had come.
 
@@ -20,7 +20,7 @@ The 1950s and 60s shaped motorcycling’s image: British marques like Norton and
 
 ## Varieties of Two-Wheeled Freedom
 
-![Varieties image](2603230855-section3.png)
+![Varieties image](img/2603230855-section3.png)
 
 Modern motorcycles are tailored to different kinds of freedom. Their design choices—frame geometry, engine character, suspension travel—determine how a bike communicates with its rider.
 
@@ -38,7 +38,7 @@ Each category offers a distinct recipe for what riding feels like. Some riders p
 
 ## My Riding Story: From Ducati to Kawasaki
 
-![Personal story image](2603230855-section4.png)
+![Personal story image](img/2603230855-section4.png)
 
 I began riding about ten years ago. My initiation was a Ducati Monster 821—a bike whose personality felt like a compact piece of Italian design and engineering. The Monster rewarded precise inputs: its L‑twin engine provided a resonant, tactile soundtrack to every ride, requiring the rider to be deliberate with throttle and line. In the city, it taught me how to read traffic and maintain flow; on mountain roads, it taught me how to place the bike and trust its chassis through a sequence of corners.
 
@@ -48,7 +48,7 @@ The arc of that transition mirrors how my riding matured. Early on, riding felt 
 
 ## Reflections on the Journey
 
-![Reflection image](2603230855-section5.png)
+![Reflection image](img/2603230855-section5.png)
 
 Motorcycling remains timeless because it channels two enduring human impulses: the desire for mastery and the desire for freedom. Both bikes I’ve owned taught complementary lessons. The Ducati taught sensitivity—how small inputs change the bike’s behavior and how listening is as important as action. The Kawasaki taught confidence—how a well-built machine can amplify a rider’s intent without hiding the consequences of a mistake.
 
