@@ -1,0 +1,10 @@
+curl -s -X POST "https://api.openai.com/v1/images/generations" 
+-H "Authorization: Bearer $YOUR_API_KEY" 
+-H "Content-Type: application/json" 
+-d '{
+"model": "gpt-image-1",
+"prompt": "Cover image, square 2048x2048 PNG. Headline text (Chinese): '''OpenClaw 安全风险：给用户与自托管者的警钟''' — place the full title prominently and centered, large readable Chinese type with high contrast. Include an integrated OpenClaw logo motif (stylized lobster/clam icon) near the headline. Style: futurist, scientific, programming-oriented; dark background (deep navy/charcoal) with teal and neon cyan accents. Background elements: subtle mesh/network/grid, schematic lock/shield icon, faint code-syntax lines and semitransparent terminal snippets. Composition: balanced, title legible at thumbnail size, logo upper-left or centered-left, small programmer/technical visual cues (brackets, angle brackets, mono font snippets). Lighting: soft cybernetic glow behind logo/title, high contrast, minimal clutter. Color palette: deep blue, teal, neon cyan accents, silver-gray. Output: PNG, 2048x2048, clean vector-like lines, slightly geometric, modern tech aesthetic.",
+"size": "2048x2048",
+"response_format": "b64_json"
+}' 
+| jq -r '.data[0].b64_json' | base64 --decode > ~/.openclaw/workspace/contentPolished/2603271113_openclaw-security.png
