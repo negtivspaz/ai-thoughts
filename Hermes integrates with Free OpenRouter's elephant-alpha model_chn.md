@@ -3,6 +3,7 @@
 - 使用 Hermes 作为 OpenClaw 的即插即用替代品。  
 - 通过 OpenRouter 配置免费的 Elephant-Alpha 模型。
 
+![img](img/260414_hermes_openrouter2.png)
 ### 背景  
 - 在使用 OpenClaw 几个月后，我对 Hermes 产生了好奇，并决定尝试一下。  
 - 本指南将介绍如何通过 OpenRouter 集成免费的 Elephant-Alpha 模型。
