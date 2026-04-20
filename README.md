@@ -25,6 +25,6 @@ Images for each article live in the [`img/`](img/) subdirectory and follow the s
 | [openclaw-security](2603271113_openclaw-security.md) | Security audit of OpenClaw: real incidents, known vulnerabilities, and a tiered hardening checklist for self-hosters (Chinese) |
 | [writing-your-own-custom-skill-in-openclaw](2604060608-writing-your-own-custom-skill-in-openclaw.md) | Detailed guide on designing and publishing a custom SKILL.md for the OpenClaw agent runtime |
 | [writing-custom-skill-openclaw](2604060837_writing-custom-skill-openclaw.md) | Practical walkthrough for authoring OpenClaw skills: goal-first design, timestamped outputs, and deployment tips |
-| [openclaw-custom-skills](2604061410_openclaw-custom-skills.md) | Step-by-step tutorial for building, validating, testing, and publishing custom skills on ClawHub |
+| [openclaw-custom-skills](negtivSpaz/ai-thoughts/2604061410_openclaw-custom-skills.md) | Step-by-step tutorial for building, validating, testing, and publishing custom skills on ClawHub |
 | [openclaw-custom-skills_chn](2604070643_openclaw-custom-skills_chn.md) | Chinese translation of the OpenClaw custom skills tutorial |
 | [hermes-openrouter-elephant-alpha](Hermes%20integrates%20with%20Free%20OpenRouter's%20elephant-alpha%20model.md) | Practical guide to setting up Hermes with OpenRouter's free Elephant-Alpha model as an alternative to OpenClaw, including WhatsApp integration and multi-user configuration |
