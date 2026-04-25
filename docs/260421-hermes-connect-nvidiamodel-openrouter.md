@@ -132,7 +132,7 @@ Core Definitions
 - 已安装 Hermes
 - 想测试几个免费模型
 
-![hermes-tui](../imgs/2026-04-23-113217_hyprshot.png)
+![hermes-tui](../imgs/260422_hermes_nvidia_main.png)
 
 ## 重点
 
