@@ -12,16 +12,12 @@
 
 | 文章 | 简介 |
 |---|---|
-| [opc](docs/2603140503_opc.md) | 如何用AI创办一人公司——六个可执行步骤、推荐技术栈与90天路线图（中文） |
+| [一人公司](docs/2603171329-illustrated.md) | 借助AI创办一人企业的图文指南——六个步骤、推荐技术栈与90天路线图（中文） |
 | [openclaw-thoughts](docs/2603131145-openclaw-thoughts.md) | 将OpenClaw作为本地AI代理平台运行的个人笔记：可组合性、技能与实战心得（中文） |
-| [ai](docs/2603141144-ai.md) | 利用AI自动化启动个人业务的精华指南，涵盖产品、营销、客服与财务（中文） |
-| [illustrated (v1)](docs/2603141144-illustrated.md) | 一人AI公司指南图文版，第一稿（中文） |
-| [illustrated (v2)](docs/2603160502-illustrated.md) | 一人AI公司指南图文版，第二稿（中文） |
-| [illustrated (v3)](docs/2603171329-illustrated.md) | 一人AI公司指南图文版，第三稿，含封面图（中文） |
-| [polished](docs/2603221200-polished.md) | 摩托车骑行随笔精修版（中文） |
+| [timeless-allure-motorcycle-zh](docs/2603221200-timeless-allure-motorcycle-zh.md) | 摩托车文化与个人骑行历程的完整中文长文，涵盖历史、车种与从杜卡迪到川崎的亲身经历 |
+| [timeless-allure-motorcycle-brief-zh](docs/2603221311-timeless-allure-motorcycle-brief-zh.md) | 摩托车骑行随笔简版（中文） |
 | [the-timeless-allure-of-motorcycle-riding_eng](docs/2603221228-the-timeless-allure-of-motorcycle-riding_eng.md) | 摩托车文化、历史与个人骑行体验的英文随笔 |
 | [the-timeless-allure-of-motorcycle-riding_chn](docs/2603221228-the-timeless-allure-of-motorcycle-riding_chn.md) | 上述摩托车随笔的中文译版 |
-| [polished_zh](docs/2603221311-polished_zh.md) | 摩托车骑行文章的精修中文版，文笔进一步打磨 |
 | [timeless-allure-motorcycle-riding](docs/2603230855-timeless-allure-motorcycle-riding.md) | 摩托车骑行主题文章中文重写版，附各章节配图 |
 | [the-timeless-allure-of-motorcycle-riding](docs/2603231032-the-timeless-allure-of-motorcycle-riding.md) | 摩托车文化、历史与骑行风格英文文章，含图片提示词参考表 |
 | [openclaw-security](docs/2603271113_openclaw-security.md) | OpenClaw安全审计：真实事件、已知漏洞及面向自托管用户的分级加固清单（中文） |
