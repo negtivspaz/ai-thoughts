@@ -15,9 +15,7 @@ Images for each article live in the [`imgs/`](imgs/) subdirectory and follow the
 | [one-person-company](docs/2603171329-illustrated.md) | Illustrated guide to launching a solo business with AI — six steps, toolstack, and a 90-day roadmap (Chinese) |
 | [openclaw-thoughts](docs/2603131145-openclaw-thoughts.md) | Personal notes on running OpenClaw as a local AI agent platform: composability, skills, and lessons learned (Chinese) |
 | [timeless-allure-motorcycle-zh](docs/2603221200-timeless-allure-motorcycle-zh.md) | Full Chinese essay on motorcycle culture, history, and a personal riding journey from Ducati Monster to Kawasaki Z1000R |
-| [timeless-allure-motorcycle-brief-zh](docs/2603221311-timeless-allure-motorcycle-brief-zh.md) | Condensed Chinese rendition of the motorcycle riding essay |
-| [the-timeless-allure-of-motorcycle-riding_eng](docs/2603221228-the-timeless-allure-of-motorcycle-riding_eng.md) | English essay on motorcycle culture, history, and the personal experience of riding |
-| [the-timeless-allure-of-motorcycle-riding_chn](docs/2603221228-the-timeless-allure-of-motorcycle-riding_chn.md) | Chinese translation of the motorcycle riding essay |
+| [timeless-allure-motorcycle-riding_eng](docs/2603221228-the-timeless-allure-of-motorcycle-riding_eng.md) | English essay on motorcycle culture, history, and the personal experience of riding |
 | [timeless-allure-motorcycle-riding](docs/2603230855-timeless-allure-motorcycle-riding.md) | Chinese rewrite of the motorcycle riding piece with per-section illustrations |
 | [the-timeless-allure-of-motorcycle-riding](docs/2603231032-the-timeless-allure-of-motorcycle-riding.md) | English article on motorcycle culture, history, and riding styles, with image prompt reference sheet |
 | [openclaw-security](docs/2603271113_openclaw-security.md) | Security audit of OpenClaw: real incidents, known vulnerabilities, and a tiered hardening checklist for self-hosters (Chinese) |
