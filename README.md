@@ -1,5 +1,7 @@
 # ai_thoughts
 
+[中文版](README_zh.md)
+
 A collection of articles and essays covering two main themes: using AI tools to run a lean one-person business, and hands-on experience with [OpenClaw](https://openclaw.ai) — an open-source AI agent platform. Topics range from practical how-tos (building custom skills, hardening a self-hosted deployment) to more personal writing (motorcycle culture, solo entrepreneurship).
 
 Images for each article live in the [`imgs/`](imgs/) subdirectory and follow the same `YYMMDDHHММ_slug` naming convention as the articles themselves.
