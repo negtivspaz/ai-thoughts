@@ -14,8 +14,6 @@
 |---|---|
 | [一人公司](docs/2603171329-illustrated.md) | 借助AI创办一人企业的图文指南——六个步骤、推荐技术栈与90天路线图（中文） |
 | [openclaw-thoughts](docs/2603131145-openclaw-thoughts.md) | 将OpenClaw作为本地AI代理平台运行的个人笔记：可组合性、技能与实战心得（中文） |
-| [timeless-allure-motorcycle-zh](docs/2603221200-timeless-allure-motorcycle-zh.md) | 摩托车文化与个人骑行历程的完整中文长文，涵盖历史、车种与从杜卡迪到川崎的亲身经历 |
-| [timeless-allure-motorcycle-riding_eng](docs/2603221228-the-timeless-allure-of-motorcycle-riding_eng.md) | 摩托车文化、历史与个人骑行体验的英文随笔 |
 | [timeless-allure-motorcycle-riding](docs/2603230855-timeless-allure-motorcycle-riding.md) | 摩托车骑行主题文章中文重写版，附各章节配图 |
 | [the-timeless-allure-of-motorcycle-riding](docs/2603231032-the-timeless-allure-of-motorcycle-riding.md) | 摩托车文化、历史与骑行风格英文文章，含图片提示词参考表 |
 | [openclaw-security](docs/2603271113_openclaw-security.md) | OpenClaw安全审计：真实事件、已知漏洞及面向自托管用户的分级加固清单（中文） |
