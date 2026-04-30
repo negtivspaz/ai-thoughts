@@ -30,5 +30,4 @@
 | [engage-ai](docs/260420-engage-ai.md) | Claude工具使用笔记与面向开发者的AI效率提升技巧 |
 | [hermes-update-err](docs/260423-hermes-update-err.md) | 排查Hermes TUI构建失败问题：根因为根目录package.json格式错误 |
 | [enable-2nd-brain-obsidian](docs/Enable%20My%202nd%20Brain%20with%20Obsidian.md) | 在Arch Linux上将Obsidian与AI工具（OpenRouter、Claude）集成，打造轻量级第二大脑 |
-| [hermes-custom-skill-install](docs/260429-custom-skill-hermes.md) | 从 GitHub 安装自定义 Hermes SKILL.md 的完整步骤：拉取、注册、验证与自动化 |
-| [hermes-custom-skill-install-chn](docs/260429-custom-skill-hermes-chn.md) | 中文完整指南：将 GitHub 上的自定义 SKILL.md 装进 Hermes 的整套流程 |
+| [hermes-custom-skill-install-chn](docs/260429-custom-skill-hermes-chn.md) | 从 GitHub 安装自定义 Hermes Skill 的完整可复现流程，含实际验证的命令与每一步详解 |

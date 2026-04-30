@@ -30,5 +30,4 @@ Images for each article live in the [`imgs/`](imgs/) subdirectory and follow the
 | [engage-ai](docs/260420-engage-ai.md) | Notes and links on Claude tooling and AI productivity tips for developers |
 | [hermes-update-err](docs/260423-hermes-update-err.md) | Debugging the Hermes TUI build failure caused by a malformed root package.json |
 | [enable-2nd-brain-obsidian](docs/Enable%20My%202nd%20Brain%20with%20Obsidian.md) | Notes on integrating Obsidian with AI tools (OpenRouter, Claude) as a lightweight 2nd brain on Arch Linux |
-| [hermes-custom-skill-install](docs/260429-custom-skill-hermes.md) | Step-by-step guide to installing a custom Hermes SKILL.md from GitHub: fetch, register, verify, and automate |
-| [hermes-custom-skill-install-chn](docs/260429-custom-skill-hermes-chn.md) | Chinese guide: 从 GitHub 安装自定义 Hermes Skill 的完整流程 |
+| [hermes-custom-skill-install](docs/260429-custom-skill-hermes.md) | Tested end-to-end workflow: install a custom Hermes SKILL.md from GitHub, with verified commands, examples, and a live installation walkthrough |

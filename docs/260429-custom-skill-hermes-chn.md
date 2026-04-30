@@ -1,5 +1,7 @@
 # 怎么从 GitHub 安装自定义 Hermes Skill
 
+![hermes-skill](../imgs/260429-hermes-skill.png)
+
 这篇是一个已经跑通、可复现的完整流程：把 GitHub 上的自定义 `SKILL.md` 装进 Hermes，验证安装结果，运行它，最后还能做自动化。
 
 ## 前置条件

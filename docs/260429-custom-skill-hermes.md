@@ -1,5 +1,7 @@
 # How to Install a Custom Hermes Skill from GitHub
 
+![hermes-skill](../imgs/260429-hermes-skill.png)
+
 This guide documents a tested, end-to-end workflow to install a custom `SKILL.md` from GitHub into Hermes, verify the installation, run the skill, and automate it.
 
 ## Prerequisites
@@ -28,6 +30,8 @@ Conversation summary:
 - The raw `SKILL.md` was fetched, inspected, and registered locally.
 - The skill was installed as `ai-newsletter-daily` and verified with skill inspection/listing.
 - The output behavior was confirmed: the skill returns `newsletter_items`, `markdown_newsletter`, and `json_newsletter`; persistence and delivery are handled by your own workflow (`write_file`, `send_message`, cron, etc.).
+
+The actual SKILL.md > https://github.com/j3ffyang/ai-custom-skills
 
 ---
 
@@ -261,15 +265,15 @@ The following terminal output confirms `ai-newsletter-daily` is installed locall
 ```sh
 hermes skills list
                              Installed Skills                             
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━┓
-┃ Name                        ┃ Category             ┃ Source  ┃ Trust   ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━┩
-│ ai-newsletter-daily         │                      │ local   │ local   │
-│ dogfood                     │                      │ builtin │ builtin │
-│ claude-code                 │ autonomous-ai-agents │ builtin │ builtin │
-│ codex                       │ autonomous-ai-agents │ builtin │ builtin │
-│ hermes-agent                │ autonomous-ai-agents │ builtin │ builtin │
-│ ...                         │ ...                  │ builtin │ builtin │
-└─────────────────────────────┴──────────────────────┴─────────┴─────────┘
+┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━┓
+┃ Name                  ┃ Category             ┃ Source  ┃ Trust   ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━┩
+│ ai-newsletter-daily   │                      │ local   │ local   │
+│ dogfood               │                      │ builtin │ builtin │
+│ claude-code           │ autonomous-ai-agents │ builtin │ builtin │
+│ codex                 │ autonomous-ai-agents │ builtin │ builtin │
+│ hermes-agent          │ autonomous-ai-agents │ builtin │ builtin │
+│ ...                   │ ...                  │ builtin │ builtin │
+└───────────────────────┴──────────────────────┴─────────┴─────────┘
 0 hub-installed, 70 builtin, 1 local
 ```
