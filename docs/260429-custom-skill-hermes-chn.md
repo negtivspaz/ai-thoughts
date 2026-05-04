@@ -2,276 +2,148 @@
 
 ![hermes-skill](../imgs/260429-hermes-skill.png)
 
-这篇是一个已经跑通、可复现的完整流程：把 GitHub 上的自定义 `SKILL.md` 装进 Hermes，验证安装结果，运行它，最后还能做自动化。
+本指南按端到端流程说明（已实际验证）：把 GitHub 上的自定义 `SKILL.md` 复制到 `~/.hermes/skills`，确认已列出，再运行，并可按需自动化。采用这种目录布局时，Hermes 不需要单独的 register 或 install 命令。
 
 ## 前置条件
 
-- 你已经有 Hermes，并且 channel 配好了
-- 你这边已经接了 Nvidia Nemotron **免费**模型（我是通过 OpenRouter 接的，你也可以换成别的模型）
+- 已配置至少一个频道的 Hermes
+- 已接入的模型（本文示例使用通过 OpenRouter 的 Nvidia Nemotron **免费**版；任意兼容模型均可）
 
 ## 背景
 
-我之前把一个自定义 `SKILL.md` 发到了 GitHub，然后需要一条稳定、可落地的安装路径把它装到 Hermes 里。看了不少文档，还是觉得流程不够顺，所以我就直接用一轮 AI 助手对话，把整套步骤一步一步跑通了。
+我在 GitHub 上发布了一份自定义 `SKILL.md`，并希望有一条可靠的 Hermes 安装路径。读过若干文档后仍未找到一条连贯的可操作说明，于是与 AI 助手一起跑通流程，并把结果整理成文。
 
-这篇文章就是那次会话整理后的技术版。目的很简单：让你少踩坑、少试错，直接按步骤就能复现。
+本文是该次会话的净化版，便于你按相同步骤操作，减少试错。
 
-这里所有技术命令都在真实环境里测过，确认可用。文中的代码块保持和验证时完全一致。
+下文 shell 示例已在真实环境中验证；请将仓库、路径、分支与本地技能 slug 换成你自己的。
 
 ## 对话上下文（为什么会有这篇文档）
 
-我当时给助手的原始提问：
+最初向助手提出的请求：
 
 > i've written a custom SKILL.md that has been published at my Github account. Please guide me how to install it either through chat here or in command line
 
-对话结论大概是这样：
+会话涵盖内容：
 
-- 先把关键输入信息确认清楚：仓库 URL、技能名、`SKILL.md` 在仓库里的路径。
-- 我提供的 URL 是：`https://github.com/j3ffyang/ai-custom-skills/tree/main/hermes/ai-newsletter-prompt`。
-- 然后把原始 `SKILL.md` 拉下来，检查内容，再在本地注册。
-- skill 以 `ai-newsletter-daily` 的名字安装成功，并且能通过查看/列表命令验证。
-- 输出行为也确认了：这个 skill 会返回 `newsletter_items`、`markdown_newsletter`、`json_newsletter`；至于存哪里、怎么发（`write_file`、`send_message`、cron 等），由你自己的工作流决定。
+- 明确输入项：仓库 URL、技能名、`SKILL.md` 路径。
+- 示例 URL：`https://github.com/j3ffyang/ai-custom-skills/tree/main/hermes/ai-newsletter-prompt`。
+- 拉取并审阅 raw `SKILL.md`，再复制到 `~/.hermes/skills`。
+- 将技能安装为 `ai-newsletter-daily`，并用 `hermes skills list` 确认。
+- 确认输出：`newsletter_items`、`markdown_newsletter`、`json_newsletter`；持久化与投递仍由你的工作流负责（`write_file`、`send_message`、cron 等）。
+
+源仓库：https://github.com/j3ffyang/ai-custom-skills
 
 ---
 
-## 1. 先准备必要信息
+## 1. 从 GitHub 获取自定义 SKILL.md
 
-| 项目 | 你需要准备什么 | 你的实际示例 |
-|------|---------------|------------------------|
-| GitHub 仓库 | Owner / repo 名（或完整 URL） | j3ffyang/ai-custom-skills |
-| SKILL.md 路径 | 仓库内相对路径（不在根目录时） | hermes/ai-newsletter-prompt/SKILL.md |
-| Skill 名称 | 本地要用的小写标识（支持连字符/下划线） | ai-newsletter-daily |
-| 分支 / tag / commit（可选） | 默认 main/master；不同的话要指定 | main（默认） |
+复制到 `~/.hermes/skills` 之前，你需要两样东西：
 
+1. **`SKILL.md` 的 raw URL**。最简单：在 GitHub 打开 `SKILL.md`，点 **Raw**，复制地址栏。也可自行拼  
+   `https://raw.githubusercontent.com/<owner>/<repo>/<ref>/<path-to-SKILL.md>`  
+   （`<ref>` 一般为 `main` 或 `master`；若要固定版本可用标签或提交 SHA）。
 
-## 2. 拉取原始 SKILL.md 文件
+2. **本地技能 slug** — 小写标识（连字符或下划线），对应路径 `~/.hermes/skills/<slug>/SKILL.md`。slug **由你决定**，不必与仓库里的文件夹名一致；本文仓库路径为 `hermes/ai-newsletter-prompt/`，安装目录名为 `ai-newsletter-daily`。
 
-用 `curl`（或者 `wget`）从 GitHub 下载 raw 文件。把占位符换成你自己的值就行。
+下面示例使用我本人维护的一份自定义 `SKILL.md`。
 
-```bash
-# Create a temporary directory (optional but tidy)
-mkdir -p /tmp/hermes-skill
+| 项目 | 示例（本文） |
+|------|----------------------|
+| 所有者 / 仓库 | `j3ffyang/ai-custom-skills` |
+| 仓库内 `SKILL.md` 路径 | `hermes/ai-newsletter-prompt/SKILL.md` |
+| 分支 / 标签 / 提交 | `main`（默认） |
+| 本地 slug | `ai-newsletter-daily` |
 
-# Download the raw SKILL.md
-curl -sL -o /tmp/hermes-skill/SKILL.md \
-  "https://raw.githubusercontent.com/<OWNER>/<REPO>/<BRANCH>/<PATH_TO_SKILL>"
-```
+先下载到临时目录，再执行 §2 安装：
 
-你的实际示例：
-
-```bash
+```sh
 mkdir -p /tmp/hermes-skill
 curl -sL -o /tmp/hermes-skill/SKILL.md \
   "https://raw.githubusercontent.com/j3ffyang/ai-custom-skills/main/hermes/ai-newsletter-prompt/SKILL.md"
 ```
 
+**克隆备选：** 若使用 `git clone`，可用 `cp` 从工作区复制 `SKILL.md`，代替 `curl` — 适合私有仓库或需要旁邻文件时。
 
-可选：验证下载内容
+## 2. 在本地安装技能
 
-```bash
-head -20 /tmp/hermes-skill/SKILL.md   # should show the YAML front‑matter
-```
+将 `SKILL.md` 复制到 `~/.hermes/skills/<skill-name>/SKILL.md`。这就是完整安装：Hermes 从此目录加载技能，本地自定义技能不需要额外的 CLI 注册步骤。本例中 slug 为 `ai-newsletter-daily`，故路径为 `~/.hermes/skills/ai-newsletter-daily/SKILL.md`。
 
-## 3. 在 Hermes 里注册 Skill
+## 3. 验证安装
 
-Hermes 提供了 `skill_manage` 工具。如果这个 skill 还不存在，用 create；如果已经有了并且要更新，用 patch 或 edit。
-
-```bash
-# Install (create) the skill
-hermes skill manage create \
-  --name <SKILL_NAME> \
-  --content "$(cat /tmp/hermes-skill/SKILL.md)"
-```
-
-示例
-
-```bash
-hermes skill manage create \
-  --name ai-newsletter-daily \
-  --content "$(cat /tmp/hermes-skill/SKILL.md)"
-```
-
-你应该会看到类似这样的成功提示：
+执行：
 
 ```sh
-Success: Skill 'ai-newsletter-daily' created.
+hermes skills list
 ```
 
-## 4. 验证安装结果
+自定义技能应出现在输出中。
 
-```bash
-hermes skill view <SKILL_NAME>
+```sh
+hermes skills list
+                                   Installed Skills                                   
+┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━┓
+┃ Name                    ┃ Category             ┃ Source  ┃ Trust   ┃ Status  ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━┩
+│ ai-newsletter-daily     │                      │ local   │ local   │ enabled │
 ```
 
-示例
+## 4. 环境变量（示例：ai-newsletter-daily）
 
-```bash
-hermes skill view ai-newsletter-daily
-```
+若仅通过复制到 `~/.hermes/skills` 安装技能，`hermes skills inspect` 不会覆盖该本地技能，因此无法用 inspect 核对 `required_environment_variables` 或相关元数据。
 
-输出里会包含 YAML front‑matter、描述、标签和完整流程，能用来确认 skill 已经正确加载。
+本文使用的示例 `SKILL.md` 在文件中未定义 `required_environment_variables`。运行时所需的密钥仍取决于技能实际调用的接口；请根据 `SKILL.md` 正文、README 或你自己的笔记来设置。
 
+`ai-newsletter-daily` 需要：
 
-## 5. 设置必需环境变量（如果有）
-
-很多 Hermes skill 会在 metadata 里声明需要的环境变量。你可以在 `skill view` 输出里找 `required_environment_variables` 这类字段。
-
-`ai-newsletter-daily` 需要这两个：
-
-| 变量 | 用途 | 怎么设置 |
+| 变量 | 用途 | 如何设置 |
 |----------|---------|------------|
-| BRAVE_API_KEY | 通过 Brave 做网页搜索 | export BRAVE_API_KEY=your_brave_key |
-| FIRECRAWL_API_KEY | 通过 Firecrawl 抓网页内容 | export FIRECRAWL_API_KEY=your_firecrawl_key |
+| `BRAVE_API_KEY` | 通过 Brave 进行网页搜索 | `export BRAVE_API_KEY=your_brave_key` |
+| `FIRECRAWL_API_KEY` | 通过 Firecrawl 抓取页面 | `export FIRECRAWL_API_KEY=your_firecrawl_key` |
 
-把这些 export 写到你的 shell profile（`~/.bashrc`、`~/.zshrc` 等），或者在当前会话里临时导出也行。
+请写入 shell 配置文件（`~/.bashrc`、`~/.zshrc` 等）持久化，或在运行 Hermes 的会话中 export。
 
 ```bash
 export BRAVE_API_KEY=xxxxxxxxxxxxxxxxxxxx
 export FIRECRAWL_API_KEY=yyyyyyyyyyyyyyyyyyyy
 ```
 
+## 6. 使用 skill
 
-## 6. 使用这个 Skill
+Hermes 会根据用户意图，在终端 TUI 与桥接的聊天应用中路由到技能。除非你的部署或桥接另有约定，否则不需要特殊语法。
 
-这个 skill 运行后会返回 3 个值：
+**Hermes TUI**
 
-- newsletter_items – 文章对象列表  
-- markdown_newsletter – 可直接发送的 Markdown newsletter
-- json_newsletter – 给下游流程用的 JSON payload
+- 用自然语言描述任务（例如技能与代码审查相关时，可说：“审查我当前目录里的代码”）。
+- 若 `SKILL.md` 定义了激活短语或关键词，使用它们以便路由命中技能的触发条件。
+- 依赖文件或上下文的技能，通常在询问当前打开的缓冲区或你关心的路径时会有响应。
 
-示例：交互式运行 skill 并保存 markdown
+**消息通道（如 WhatsApp、Telegram）**
 
-```bash
-# Run the skill (you can pass overrides if desired)
-result=$(hermes skill run ai-newsletter-daily \
-          --set target_news_count=15 \
-          --set search_query="latest AI news today")
+- 在群组中，桥接有时需要 @ 提及（例如 `@Hermes …`），代理才会处理该消息。
+- 在私聊中，与技能目的相符的纯文本通常即可。
+- 部分桥接使用命令前缀（`!`、`/` 等）；请在你的桥接与 Hermes 频道设置中确认。
 
-# Extract the markdown part (assuming the skill returns a JSON map)
-markdown=$(echo "$result" | jq -r .markdown_newsletter)
+**若技能未运行**
 
-# Save to a dated file
-hermes write_file \
-  --path "~/ai-newsletters/$(date +%F)_newsletter.md" \
-  --content "$markdown"
-```
+- 将你的措辞与 `SKILL.md` 中的 **Triggers**（或等价章节）对照。
+- 发送测试消息时观察 Hermes 日志中的入站文本与意图路由。
 
+## 6. 用 Cron 自动化（可选）
 
-示例：通过 WhatsApp 发送 newsletter（或者发到别的平台）
+若要按固定节奏生成并投递输出（例如每日简报），可配置 Hermes 的 cron 任务，或使用外部调度器调用与你交互时相同的工作流。具体参数取决于 Hermes 版本与频道配置；cron 相关语法请用 `hermes --help` 及安装文档核对。
 
-```bash
-hermes send_message \
-  --target whatsapp \
-  --message "$markdown"
-```
+## 7. 日后更新 Skill
 
-## 7. 用 Cron 自动化（可选）
+重新获取 raw `SKILL.md`（§1），替换 `~/.hermes/skills/<skill-name>/SKILL.md` 下的文件，再用 `hermes skills list` 确认。
 
-如果你想定时生成并发送 newsletter，可以建一个 Hermes cron job。
+## 8. 速查备忘
 
-先创建 cron job 定义（YAML）
-
-```yaml
-# ~/.hermes/cron/jobs/daily-ai-newsletter.yaml
-action: create
-name: daily-ai-newsletter
-schedule: "0 8 * * *"          # 08:00 every day
-prompt: |
-  # Run the skill and capture outputs
-  result=$(hermes skill run ai-newsletter-daily \
-                --set target_news_count=15 \
-                --set search_query="latest AI news today")
-  markdown=$(echo "$result" | jq -r .markdown_newsletter)
-
-  # Save locally
-  hermes write_file --path "~/ai-newsletters/$(date +%F).md" --content "$markdown"
-
-  # Deliver (example: WhatsApp)
-  hermes send_message --target whatsapp --message "$markdown"
-skills: []          # no extra skills needed
-deliver: local      # keep file locally; send_message handles delivery
-```
-
-注册 cron job：
-
-```bash
-hermes cronjob create --file ~/.hermes/cron/jobs/daily-ai-newsletter.yaml
-```
-
-这样它每天早上就会自动跑：生成 newsletter、落地一份 markdown、再发到 WhatsApp（或你指定的平台）。
-
-
-## 8. 后续更新 Skill
-
-如果你之后把新版本 push 到 GitHub：
-
-1. 先重复第 2 步，拉最新 `SKILL.md`。  
-2. 用 patch（小改动推荐）或者 edit（整份替换）：
-
-```bash
-hermes skill manage patch \
-  --name ai-newsletter-daily \
-  --old_string "<old_unique_snippet>" \
-  --new_string "<new_content>"
-```
-
-或者整份替换：
-
-```bash
-hermes skill manage edit \
-  --name ai-newsletter-daily \
-  --content "$(cat /tmp/hermes-skill/SKILL.md)"
-```
-
-3. 最后用 skill view 再确认一次。
-
-
-## 9. 快速参考 Cheat‑Sheet
-
-```bash
-# 1. Download
-mkdir -p /tmp/hermes-skill
-curl -sL -o /tmp/hermes-skill/SKILL.md \
-  "https://raw.githubusercontent.com/<OWNER>/<REPO>/<BRANCH>/<PATH_TO_SKILL>"
-
-# 2. Install (create)
-hermes skill manage create \
-  --name <SKILL_NAME> \
-  --content "$(cat /tmp/hermes-skill/SKILL.md)"
-
-# 3. Verify
-hermes skill view <SKILL_NAME>
-
-# 4. Set env vars (example)
-export BRAVE_API_KEY=...
-export FIRECRAWL_API_KEY=...
-
-# 5. Use skill (save markdown)
-result=$(hermes skill run <SKILL_NAME> --set target_news_count=15)
-markdown=$(echo "$result" | jq -r .markdown_newsletter)
-hermes write_file --path "~/news/$(date +%F).md" --content "$markdown"
-
-# 6. Optional: cron job (see YAML above)
-hermes cronjob create --file ~/.hermes/cron/jobs/<JOB_NAME>.yaml
-```
-
-把 \<OWNER>、\<REPO>、\<BRANCH>、<PATH_TO_SKILL>、<SKILL_NAME> 换成你的实际值即可。
-
-## 10. 安装验证快照
-
-下面这段终端输出能证明 `ai-newsletter-daily` 已经作为本地 skill 成功安装到 Hermes：
-
-```sh
-hermes skills list
-                             Installed Skills                             
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━┓
-┃ Name                        ┃ Category             ┃ Source  ┃ Trust   ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━┩
-│ ai-newsletter-daily         │                      │ local   │ local   │
-│ dogfood                     │                      │ builtin │ builtin │
-│ claude-code                 │ autonomous-ai-agents │ builtin │ builtin │
-│ codex                       │ autonomous-ai-agents │ builtin │ builtin │
-│ hermes-agent                │ autonomous-ai-agents │ builtin │ builtin │
-│ ...                         │ ...                  │ builtin │ builtin │
-└─────────────────────────────┴──────────────────────┴─────────┴─────────┘
-0 hub-installed, 70 builtin, 1 local
-```
+| 步骤 | 操作 |
+|------|--------|
+| 1 | Raw URL（GitHub **Raw** 或 `raw.githubusercontent.com`…）+ 选定本地 `<slug>`；`mkdir` + `curl` 或从 `git clone` 复制 |
+| 2 | 复制到 `~/.hermes/skills/<slug>/SKILL.md` |
+| 3 | `hermes skills list` 验证 |
+| 4 | 导出技能所需环境变量（依据 `SKILL.md`/文档；本地复制无法用 `inspect`） |
+| 5 | 通过 TUI 或频道调用；措辞与触发条件对齐 |
+| 6 | 可选：cron 或调度器 |
+| 7 | 更新：重复 §1 下载并替换文件 |
