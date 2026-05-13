@@ -31,3 +31,5 @@
 | [hermes-update-err](docs/260423-hermes-update-err.md) | 排查Hermes TUI构建失败问题：根因为根目录package.json格式错误 |
 | [enable-2nd-brain-obsidian](docs/Enable%20My%202nd%20Brain%20with%20Obsidian.md) | 在Arch Linux上将Obsidian与AI工具（OpenRouter、Claude）集成，打造轻量级第二大脑 |
 | [hermes-custom-skill-install-chn](docs/260429-custom-skill-hermes-chn.md) | 从 GitHub 安装自定义 Hermes Skill 的完整可复现流程，含实际验证的命令与每一步详解 |
+| [hermes-soul](docs/260513-hermes-soul.md) | 关于配置Hermes Agent的SOUL.md以定义代理身份、语气和边界的实用指南 |
+| [opencode-vs-claude-code](docs/260513-chooseCC-openCode.md) | OpenCode与Claude Code的比较：用于运行Claude Opus和其他模型（中英双语） |

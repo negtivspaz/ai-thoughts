@@ -31,3 +31,5 @@ Images for each article live in the [`imgs/`](imgs/) subdirectory and follow the
 | [hermes-update-err](docs/260423-hermes-update-err.md) | Debugging the Hermes TUI build failure caused by a malformed root package.json |
 | [enable-2nd-brain-obsidian](docs/Enable%20My%202nd%20Brain%20with%20Obsidian.md) | Notes on integrating Obsidian with AI tools (OpenRouter, Claude) as a lightweight 2nd brain on Arch Linux |
 | [hermes-custom-skill-install](docs/260429-custom-skill-hermes.md) | Tested end-to-end workflow: install a custom Hermes SKILL.md from GitHub, with verified commands, examples, and a live installation walkthrough |
+| [hermes-soul](docs/260513-hermes-soul.md) | Practical guide to configuring Hermes Agent's SOUL.md for personality customization |
+| [choose-between-opencode-and-claude-code](docs/260513-chooseCC-openCode.md) | Comparison of OpenCode vs Claude Code for running Claude Opus and other models (English/Chinese) |
